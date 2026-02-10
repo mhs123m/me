@@ -9,7 +9,7 @@ const Hero = () => {
       </p>
       <div className="summary" style={{ maxWidth: '600px' }}>
         <p>
-          4+ years of backend experience with a strong focus on scalable systems, APIs, and data modeling.
+          5 years of backend experience with a strong focus on scalable systems, APIs, and data modeling.
           Comfortable owning backend systems end-to-end, from architecture to deployment.
         </p>
       </div>
