@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer style={{ 
-      marginTop: 'var(--space-xl)', 
-      paddingTop: 'var(--space-md)', 
+    <footer style={{
+      marginTop: 'var(--space-xl)',
+      paddingTop: 'var(--space-md)',
       borderTop: '1px solid var(--border)',
       color: 'var(--text-tertiary)',
       fontSize: '0.9rem',
@@ -16,7 +16,7 @@ const Footer = () => {
         <a href="#" style={{ border: 'none' }}>Email</a>
       </div>
       <div className="text-mono">
-        © {new Date().getFullYear()} Backend Engineer
+        © {new Date().getFullYear()} Software Engineer
       </div>
     </footer>
   );
