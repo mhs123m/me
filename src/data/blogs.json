@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Building Scalable APIs with FastAPI",
+    "excerpt": "Lessons learned from designing high-throughput async APIs in production.",
+    "category": "technical",
+    "status": "published",
+    "date": "2025-01-15",
+    "content": "# Building Scalable APIs with FastAPI\n\nFastAPI has quickly become one of my go-to frameworks for building backend services. Here's what I've learned deploying it in production.\n\n## Why FastAPI?\n\nThe combination of **async support**, automatic OpenAPI docs, and Pydantic validation makes it incredibly productive. You get type safety and documentation essentially for free.\n\n## Key Patterns\n\n### Dependency Injection\n\nFastAPI's dependency injection system is elegant:\n\n```python\nasync def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\n@app.get(\"/users/{user_id}\")\nasync def read_user(user_id: int, db: Session = Depends(get_db)):\n    return db.query(User).filter(User.id == user_id).first()\n```\n\n### Background Tasks\n\nFor fire-and-forget operations, background tasks keep your responses fast:\n\n```python\n@app.post(\"/send-email\")\nasync def send_email(background_tasks: BackgroundTasks):\n    background_tasks.add_task(send_email_task, email)\n    return {\"message\": \"Email queued\"}\n```\n\n## Performance Tips\n\n- Use **connection pooling** with SQLAlchemy async sessions\n- Enable **response caching** for read-heavy endpoints\n- Profile with `py-spy` to find bottlenecks\n- Use `uvicorn` with multiple workers in production\n\n## Conclusion\n\nFastAPI strikes the right balance between developer experience and runtime performance. It's been a solid choice for every project I've used it on."
+  },
+  {
+    "id": 2,
+    "title": "My Journey from Biology to Backend",
+    "excerpt": "How a biology degree led to a career in software engineering.",
+    "category": "lifestyle",
+    "status": "published",
+    "date": "2024-11-20",
+    "content": "# My Journey from Biology to Backend\n\nPeople are often surprised when I tell them I studied biology before becoming a software engineer. Here's how that transition happened.\n\n## The Spark\n\nIt started with bioinformatics. During my studies, I needed to analyze genomic data and wrote my first Python scripts to automate repetitive tasks. The feeling of solving problems with code was addictive.\n\n## Making the Switch\n\nI started with:\n- **Python** for scripting and data processing\n- **SQL** for querying biological databases\n- **Linux** for working with research servers\n\nThese skills translated directly to backend engineering.\n\n## What Biology Taught Me\n\nSurprisingly, biology prepared me well for software:\n\n1. **Systems thinking** — biological systems are complex, interconnected networks. So are distributed systems.\n2. **Patience with debugging** — lab experiments fail constantly. You learn to be methodical.\n3. **Reading documentation** — research papers trained me to parse dense technical material.\n\n## Advice for Career Switchers\n\n- Don't wait until you feel \"ready\" — you'll never feel ready\n- Build projects that solve real problems you care about\n- The tech industry values skills over credentials\n- Your unique background is a strength, not a weakness\n\nThe path wasn't linear, but every step taught me something valuable."
+  },
+  {
+    "id": 3,
+    "title": "Event-Driven Architecture with RabbitMQ",
+    "excerpt": "Practical patterns for decoupling services using message queues.",
+    "category": "technical",
+    "status": "published",
+    "date": "2024-09-05",
+    "content": "# Event-Driven Architecture with RabbitMQ\n\nAs systems grow, tight coupling between services becomes a bottleneck. Message queues like RabbitMQ offer an elegant solution.\n\n## The Problem\n\nIn a monolithic or tightly-coupled system, a single slow service can cascade failures across the entire stack. Direct HTTP calls create invisible dependencies.\n\n## Enter RabbitMQ\n\nRabbitMQ acts as a broker between producers and consumers:\n\n```\nProducer → Exchange → Queue → Consumer\n```\n\n### Exchange Types\n\n- **Direct** — routes to specific queues by routing key\n- **Fanout** — broadcasts to all bound queues\n- **Topic** — pattern-based routing (e.g., `order.created.*`)\n\n## Practical Patterns\n\n### Work Queues\n\nDistribute tasks across multiple workers for parallel processing. Great for CPU-intensive jobs like image processing or report generation.\n\n### Pub/Sub\n\nWhen multiple services need to react to the same event. For example, when a user signs up:\n- Email service sends a welcome email\n- Analytics service records the event\n- Notification service alerts the team\n\n### Dead Letter Queues\n\nAlways set up DLQs for failed messages. They're invaluable for debugging production issues.\n\n## Lessons Learned\n\n- **Idempotency is critical** — messages can be delivered more than once\n- **Monitor queue depth** — growing queues indicate consumers can't keep up\n- **Use acknowledgments** — don't auto-ack, confirm processing is complete\n\nMessage queues add complexity, but for the right use cases, the decoupling benefits are worth it."
+  },
+  {
+    "id": 4,
+    "title": "Working Remotely from Riyadh",
+    "excerpt": "Tips and reflections on remote work culture in the Saudi tech scene.",
+    "category": "lifestyle",
+    "status": "published",
+    "date": "2024-07-12",
+    "content": "# Working Remotely from Riyadh\n\nRemote work has reshaped how I approach my career. Here are some reflections on making it work from Riyadh.\n\n## The Saudi Tech Scene\n\nThe tech ecosystem in Saudi Arabia is growing rapidly. Vision 2030 has accelerated digital transformation, and there's a real energy around startups and technology here.\n\n## My Remote Setup\n\nAfter a lot of experimentation, here's what works for me:\n\n- **Dedicated workspace** — a separate room with a proper desk and monitor\n- **Structured schedule** — I follow a consistent routine even without an office\n- **Async communication** — working across time zones means embracing async tools\n\n## Challenges\n\n### Time Zones\n\nCollaborating with teams in Europe or the US means finding overlap windows. I've learned to front-load my deep work in the morning and reserve afternoons for meetings.\n\n### Isolation\n\nRemote work can be lonely. I combat this by:\n- Attending local tech meetups\n- Co-working spaces a few days a week\n- Regular video calls with teammates\n\n## What I've Learned\n\n- Over-communicate — when in doubt, share more context\n- Protect your focus time — not every message needs an immediate response\n- Invest in your setup — good equipment pays for itself in productivity\n- Take breaks — stepping away from the screen is not optional\n\nRemote work isn't perfect, but the flexibility and autonomy make it worth the trade-offs."
+  }
+]

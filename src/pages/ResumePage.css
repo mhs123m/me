@@ -1,0 +1,170 @@
+.resume-page .resume-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.resume-page .resume-header h1 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resume-page .subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 5px 0;
+}
+
+.resume-page .contact-info,
+.resume-page .links {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: var(--text-secondary);
+}
+
+.resume-page .cv-section {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  margin-bottom: 2rem;
+}
+
+.resume-page .left-col {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.resume-page .right-col {
+  border-left: 1px solid var(--border);
+  padding-left: 25px;
+}
+
+.resume-page .entry {
+  margin-bottom: 1.25rem;
+}
+
+.resume-page .entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.resume-page .date {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+}
+
+.resume-page .role {
+  font-style: italic;
+  margin: 2px 0;
+  color: var(--text-secondary);
+}
+
+.resume-page ul {
+  padding-left: 18px;
+  margin-top: 8px;
+  list-style: disc;
+}
+
+.resume-page li {
+  margin-bottom: 4px;
+  color: var(--text-secondary);
+}
+
+.resume-page .skill-group {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.resume-download {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--space-md);
+  margin-left: auto;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.resume-download:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+@media print {
+  .resume-download,
+  .navbar,
+  footer {
+    display: none !important;
+  }
+
+  .container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .resume-page {
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  .resume-page .resume-header {
+    margin-bottom: 1rem;
+  }
+
+  .resume-page .resume-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .resume-page .subtitle {
+    font-size: 1rem;
+    margin: 2px 0;
+  }
+
+  .resume-page .cv-section {
+    margin-bottom: 0.75rem;
+  }
+
+  .resume-page .entry {
+    margin-bottom: 0.5rem;
+  }
+
+  .resume-page ul {
+    margin-top: 4px;
+  }
+
+  .resume-page li {
+    margin-bottom: 1px;
+  }
+
+  .resume-page .skill-group {
+    margin-bottom: 4px;
+  }
+
+  @page {
+    margin: 10mm;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .resume-page .cv-section {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .resume-page .right-col {
+    border-left: none;
+    padding-left: 0;
+  }
+}

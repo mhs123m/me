@@ -12,8 +12,8 @@ const Footer = () => {
       justifyContent: 'space-between'
     }}>
       <div>
-        <a href="#" style={{ border: 'none', marginRight: 'var(--space-md)' }}>GitHub</a>
-        <a href="#" style={{ border: 'none' }}>Email</a>
+        <a href="https://github.com/mhs123m" target="_blank" rel="noopener noreferrer" style={{ border: 'none', marginRight: 'var(--space-md)' }}>GitHub</a>
+        <a href="mailto:alismailmh@gmail.com" style={{ border: 'none' }}>Email</a>
       </div>
       <div className="text-mono">
         © {new Date().getFullYear()} Software Engineer

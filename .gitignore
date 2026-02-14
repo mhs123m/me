@@ -28,10 +28,19 @@ yarn-error.log*
 
 # Editor directories and files
 .vscode/*
-.agent
-.opencode
 !.vscode/extensions.json
 .idea
-.tgn
 *.swp
 *.swo
+
+# AI / agent tooling
+.agent
+.opencode
+.tgn
+.claude
+
+# OS files
+Thumbs.db
+
+# Logs
+*.log
