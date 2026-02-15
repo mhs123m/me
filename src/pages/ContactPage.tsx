@@ -17,7 +17,7 @@ const ContactPage = () => {
           </div>
         </a>
 
-        <a href="https://linkedin.com/in/alismailmh/" target="_blank" rel="noopener noreferrer" className="contact-card">
+        <a href="https://www.linkedin.com/in/alismailmohammed/" target="_blank" rel="noopener noreferrer" className="contact-card">
           <FaLinkedin className="contact-icon" />
           <div>
             <h3>LinkedIn</h3>
