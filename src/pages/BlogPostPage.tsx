@@ -11,7 +11,7 @@ const BlogPostPage = () => {
 
   const html = useMemo(() => {
     if (!post?.content) return '';
-    return marked(post.content);
+    return marked(post.content) as string;
   }, [post]);
 
   if (!post) {

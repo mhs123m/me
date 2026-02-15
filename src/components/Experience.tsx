@@ -1,6 +1,13 @@
 import React from 'react';
 
-const ExperienceItem = ({ phase, duration, title, responsibilities }) => (
+interface ExperienceItemProps {
+  phase: string;
+  duration: string;
+  title: string;
+  responsibilities: string[];
+}
+
+const ExperienceItem = ({ phase, duration, title, responsibilities }: ExperienceItemProps) => (
   <div className="experience-item" style={{ marginBottom: 'var(--space-md)' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 'var(--space-xs)' }}>
       <h3>{phase}</h3>
@@ -22,8 +29,8 @@ const Experience = () => {
   return (
     <section id="experience">
       <h2>Experience Narrative</h2>
-      
-      <ExperienceItem 
+
+      <ExperienceItem
         phase="Phase 2 – Modern Backend & Platform Engineering"
         duration="Recent (≈2+ years)"
         title="Senior Backend Focus"
@@ -36,7 +43,7 @@ const Experience = () => {
         ]}
       />
 
-      <ExperienceItem 
+      <ExperienceItem
         phase="Phase 1 – Enterprise Backend Engineering"
         duration="Previous (≈2 years)"
         title="Software Engineer"

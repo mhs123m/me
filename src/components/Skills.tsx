@@ -1,6 +1,11 @@
 import React from 'react';
 
-const SkillGroup = ({ title, skills }) => (
+interface SkillGroupProps {
+  title: string;
+  skills: string[];
+}
+
+const SkillGroup = ({ title, skills }: SkillGroupProps) => (
   <div className="skill-group">
     <h3>{title}</h3>
     <div className="tags">
