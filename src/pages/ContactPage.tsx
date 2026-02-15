@@ -21,7 +21,7 @@ const ContactPage = () => {
           <FaLinkedin className="contact-icon" />
           <div>
             <h3>LinkedIn</h3>
-            <span>linkedin.com/in/alismailmh</span>
+            <span>/in/alismailmohammed</span>
           </div>
         </a>
 
@@ -29,7 +29,7 @@ const ContactPage = () => {
           <FaGithub className="contact-icon" />
           <div>
             <h3>GitHub</h3>
-            <span>github.com/mhs123m</span>
+            <span>@mhs123m</span>
           </div>
         </a>
       </div>

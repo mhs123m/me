@@ -101,6 +101,10 @@
 }
 
 @media print {
+  html {
+    font-size: 100%;
+  }
+
   .resume-download,
   .navbar,
   footer {
