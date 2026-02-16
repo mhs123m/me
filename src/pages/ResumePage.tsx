@@ -65,13 +65,31 @@ const ResumePage = () => {
         <div className="left-col">Technical Skills</div>
         <div className="right-col">
           <div className="skill-group">
-            <strong>Languages:</strong> Python, Java, C#, PHP, JavaScript, SQL.
+            <strong>Python:</strong> FastAPI, Pydantic, SQLAlchemy, async backends, scripting.
           </div>
           <div className="skill-group">
-            <strong>Frameworks:</strong> FastAPI, Spring Boot, .NET (CQRS, MediatR), Laravel, Angular.
+            <strong>Java:</strong> Spring Boot, JPA, microservices architecture.
           </div>
           <div className="skill-group">
-            <strong>DevOps & Tools:</strong> Docker, Kubernetes, GitHub Actions, RabbitMQ, Kafka, TDD.
+            <strong>C# / .NET:</strong> CQRS, MediatR, Entity Framework.
+          </div>
+          <div className="skill-group">
+            <strong>DevOps:</strong> Docker, Kubernetes, GitHub Actions, CI/CD.
+          </div>
+          <div className="skill-group">
+            <strong>Database:</strong> PostgreSQL, MySQL, MongoDB, Redis.
+          </div>
+          <div className="skill-group">
+            <strong>Backend:</strong> Kafka, RabbitMQ, REST APIs, websockets, gRPC, SonarQube.
+          </div>
+          <div className="skill-group">
+            <strong>Auth:</strong> JWT, OAuth, OpenID, SSO, LDAP.
+          </div>
+          <div className="skill-group">
+            <strong>AI:</strong> OpenAI, MCP, LLM.
+          </div>
+          <div className="skill-group">
+            <strong>Frontend:</strong> HTML, CSS, JS, React.
           </div>
         </div>
       </section>
