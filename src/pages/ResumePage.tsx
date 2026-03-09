@@ -17,7 +17,7 @@ const ResumePage = () => {
           <span><a href="mailto:alismailmh@gmail.com">alismailmh@gmail.com</a></span>
         </div>
         <div className="links">
-          <a href="https://linkedin.com/in/alismailmh/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |{' '}
+          <a href="https://www.linkedin.com/in/alismailmohammed" target="_blank" rel="noopener noreferrer">LinkedIn</a> |{' '}
           <a href="https://github.com/mhs123m" target="_blank" rel="noopener noreferrer">GitHub</a> |{' '}
           <a href="https://moismail.dev">moismail.dev</a>
         </div>
