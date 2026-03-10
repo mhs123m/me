@@ -40,9 +40,9 @@ const ResumePage = () => {
             </div>
             <p className="role">Software Engineer (Backend)</p>
             <ul>
-              <li>Designed and maintained scalable APIs using <strong>FastAPI, Laravel, and .NET</strong>.</li>
+              <li>Designed and maintained scalable APIs using <strong>FastAPI and .NET</strong>.</li>
               <li>Acted as <strong>Solution Architect</strong>, pre-planning system architecture, database structures, and workflows.</li>
-              <li>Applied <strong>TDD</strong> for reliable code and authored detailed technical documentation.</li>
+              <li>Applied <strong>TDD</strong> and <strong>DDD</strong> for reliable code and authored detailed technical documentation.</li>
             </ul>
           </div>
 
@@ -68,10 +68,10 @@ const ResumePage = () => {
             <strong>Python:</strong> FastAPI, Pydantic, SQLAlchemy, async backends, scripting.
           </div>
           <div className="skill-group">
-            <strong>Java:</strong> Spring Boot, JPA, microservices architecture.
+            <strong>C# / .NET:</strong> DDD, CQRS, MediatR, Entity Framework, microservices architecture.
           </div>
           <div className="skill-group">
-            <strong>C# / .NET:</strong> CQRS, MediatR, Entity Framework.
+            <strong>Java:</strong> Spring Boot, JPA, microservices architecture.
           </div>
           <div className="skill-group">
             <strong>DevOps:</strong> Docker, Kubernetes, GitHub Actions, CI/CD.
@@ -86,7 +86,7 @@ const ResumePage = () => {
             <strong>Auth:</strong> JWT, OAuth, OpenID, SSO, LDAP.
           </div>
           <div className="skill-group">
-            <strong>AI:</strong> OpenAI, MCP, LLM.
+            <strong>AI:</strong> OpenAI SDK, MCP, LLM.
           </div>
           <div className="skill-group">
             <strong>Frontend:</strong> HTML, CSS, JS, React.
