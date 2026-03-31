@@ -11,10 +11,12 @@ const BlogPage = () => {
   const active = searchParams.get('category') || 'all';
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getPublishedPosts()
       .then(setPosts)
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 

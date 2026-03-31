@@ -14,7 +14,12 @@ const env = Object.fromEntries(
     .map(line => line.split('=').map(s => s.trim()))
 );
 
-const supabase = createClient(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_ANON_KEY);
+const supabase = createClient(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_SERVICE_ROLE_KEY, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false
+  }
+});
 
 const posts = JSON.parse(
   readFileSync(join(__dirname, '../src/data/blogs.json'), 'utf8')
