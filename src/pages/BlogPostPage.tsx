@@ -1,18 +1,34 @@
-import React, { useMemo } from 'react';
+// src/pages/BlogPostPage.tsx
+import React, { useMemo, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { marked } from 'marked';
-import { getPublishedPosts } from '../utils/blogStorage';
+import { getPublishedPosts, BlogPost } from '../utils/blogStorage';
 import './BlogPostPage.css';
 
 const BlogPostPage = () => {
   const { id } = useParams();
-  const posts = getPublishedPosts();
-  const post = posts.find(p => p.id === Number(id));
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getPublishedPosts()
+      .then(posts => setPost(posts.find(p => p.id === Number(id)) ?? null))
+      .finally(() => setLoading(false));
+  }, [id]);
 
   const html = useMemo(() => {
     if (!post?.content) return '';
     return marked(post.content) as string;
   }, [post]);
+
+  if (loading) {
+    return (
+      <div className="blog-post-page">
+        <Link to="/blog" className="back-link">&larr; Back to Blog</Link>
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   if (!post) {
     return (

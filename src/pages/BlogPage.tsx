@@ -1,6 +1,7 @@
-import React from 'react';
+// src/pages/BlogPage.tsx
+import React, { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { getPublishedPosts } from '../utils/blogStorage';
+import { getPublishedPosts, BlogPost } from '../utils/blogStorage';
 import './BlogPage.css';
 
 const CATEGORIES = ['all', 'technical', 'lifestyle'];
@@ -8,7 +9,16 @@ const CATEGORIES = ['all', 'technical', 'lifestyle'];
 const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const active = searchParams.get('category') || 'all';
-  const posts = getPublishedPosts();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    getPublishedPosts()
+      .then(setPosts)
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }, []);
 
   const filtered = active === 'all'
     ? posts
@@ -31,20 +41,24 @@ const BlogPage = () => {
         ))}
       </div>
 
-      <div className="blog-list">
-        {filtered.map(post => (
-          <Link key={post.id} to={`/blog/${post.id}`} className="blog-card-link">
-            <article className="blog-card">
-              <span className="blog-meta">
-                <span className="blog-date">{post.date}</span>
-                <span className="blog-tag">{post.category}</span>
-              </span>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-            </article>
-          </Link>
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="blog-list">
+          {filtered.map(post => (
+            <Link key={post.id} to={`/blog/${post.id}`} className="blog-card-link">
+              <article className="blog-card">
+                <span className="blog-meta">
+                  <span className="blog-date">{post.date}</span>
+                  <span className="blog-tag">{post.category}</span>
+                </span>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+              </article>
+            </Link>
+          ))}
+        </div>
+      )}
 
       <p className="blog-coming-soon">More posts coming soon.</p>
     </div>

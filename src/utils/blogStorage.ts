@@ -1,4 +1,5 @@
-import seedPosts from '../data/blogs.json';
+// src/utils/blogStorage.ts
+import { supabase } from '../lib/supabase';
 
 export interface BlogPost {
   id: number;
@@ -10,44 +11,48 @@ export interface BlogPost {
   content: string;
 }
 
-const STORAGE_KEY = 'blog_posts';
-
-function initFromSeed(): void {
-  if (typeof window !== 'undefined' && !localStorage.getItem(STORAGE_KEY)) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(seedPosts));
-  }
+export async function getPosts(): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .order('date', { ascending: false });
+  if (error) throw error;
+  return data as BlogPost[];
 }
 
-function getPosts(): BlogPost[] {
-  initFromSeed();
-  if (typeof window === 'undefined') return [];
-
-  const postsJson = localStorage.getItem(STORAGE_KEY);
-  return postsJson ? JSON.parse(postsJson) : [];
+export async function getPublishedPosts(): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('status', 'published')
+    .order('date', { ascending: false });
+  if (error) throw error;
+  return data as BlogPost[];
 }
 
-function getPublishedPosts(): BlogPost[] {
-  return getPosts().filter((p) => p.status === 'published');
-}
-
-function savePost(post: BlogPost): BlogPost {
-  const posts = getPosts();
-  const index = posts.findIndex((p) => p.id === post.id);
-
-  if (index >= 0) {
-    posts[index] = post;
+export async function savePost(post: Omit<BlogPost, 'id'> | BlogPost): Promise<BlogPost> {
+  if ('id' in post && post.id) {
+    const { id, ...fields } = post;
+    const { data, error } = await supabase
+      .from('posts')
+      .update(fields)
+      .eq('id', id)
+      .select()
+      .single();
+    if (error) throw error;
+    return data as BlogPost;
   } else {
-    post.id = posts.length > 0 ? Math.max(...posts.map((p) => p.id)) + 1 : 1;
-    posts.unshift(post);
+    const { data, error } = await supabase
+      .from('posts')
+      .insert(post)
+      .select()
+      .single();
+    if (error) throw error;
+    return data as BlogPost;
   }
-
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
-  return post;
 }
 
-function deletePost(id: number): void {
-  const posts = getPosts().filter((p) => p.id !== id);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+export async function deletePost(id: number): Promise<void> {
+  const { error } = await supabase.from('posts').delete().eq('id', id);
+  if (error) throw error;
 }
-
-export { getPosts, getPublishedPosts, savePost, deletePost, initFromSeed };
