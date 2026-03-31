@@ -1,7 +1,7 @@
 // src/pages/BlogPage.tsx
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { getPublishedPosts, BlogPost } from '../utils/blogStorage';
+import { getPublishedPosts, BlogPost, getViewCount } from '../utils/blogStorage';
 import './BlogPage.css';
 
 const CATEGORIES = ['all', 'technical', 'lifestyle'];
@@ -10,6 +10,7 @@ const BlogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const active = searchParams.get('category') || 'all';
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [viewCounts, setViewCounts] = useState<Map<number, number>>(new Map());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -19,6 +20,20 @@ const BlogPage = () => {
       .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (posts.length > 0) {
+      Promise.all(
+        posts.map(post => getViewCount(post.id))
+      ).then(counts => {
+        const countsMap = new Map<number, number>();
+        posts.forEach((post, index) => {
+          countsMap.set(post.id, counts[index] || 0);
+        });
+        setViewCounts(countsMap);
+      });
+    }
+  }, [posts]);
 
   const filtered = active === 'all'
     ? posts
@@ -54,6 +69,7 @@ const BlogPage = () => {
                 </span>
                 <h3>{post.title}</h3>
                 <p>{post.excerpt}</p>
+                <span className="blog-views">{viewCounts.get(post.id) || 0} views</span>
               </article>
             </Link>
           ))}

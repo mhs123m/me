@@ -18,6 +18,13 @@
   margin-top: var(--space-xs);
 }
 
+.blog-post-header .blog-views {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
 .blog-post-content h1,
 .blog-post-content h2,
 .blog-post-content h3,

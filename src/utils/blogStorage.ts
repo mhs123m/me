@@ -56,3 +56,37 @@ export async function deletePost(id: number): Promise<void> {
   const { error } = await supabase.from('posts').delete().eq('id', id);
   if (error) throw error;
 }
+
+export async function incrementView(postId: number, ipAddress: string, userAgent: string): Promise<void> {
+  const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+
+  const { data: existingView } = await supabase
+    .from('views')
+    .select('id')
+    .eq('post_id', postId)
+    .eq('ip_address', ipAddress)
+    .gte('created_at', oneHourAgo)
+    .limit(1);
+
+  if (existingView && existingView.length > 0) {
+    return;
+  }
+
+  const { error } = await supabase
+    .from('views')
+    .insert({
+      post_id: postId,
+      ip_address: ipAddress,
+      user_agent: userAgent,
+    });
+  if (error) throw error;
+}
+
+export async function getViewCount(postId: number): Promise<number> {
+  const { count, error } = await supabase
+    .from('views')
+    .select('*', { count: 'exact', head: true })
+    .eq('post_id', postId);
+  if (error) throw error;
+  return count || 0;
+}
