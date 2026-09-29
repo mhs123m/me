@@ -35,13 +35,14 @@ const ResumePage = () => {
         <div className="right-col">
           <div className="entry">
             <div className="entry-header">
-              <strong>HALA</strong>
-              <span className="date">2026 – Present</span>
+              <strong>HALA Payments</strong>
+              <span className="date">September 2026 – Present</span>
             </div>
             <p className="role">Software Engineer (Backend)</p>
             <ul>
-              <li>Own sprint development end-to-end, from planning to delivery.</li>
-              <li>Leading the restructuring and revamp of the core entity service.</li>
+              <li>Migrating and restructuring backend APIs to support a unified registration flow.</li>
+              <li>Implementing authentication and verification flows for platform users.</li>
+              <li>Investigating and documenting cross-service request flows within a microservices-based payments platform.</li>
             </ul>
           </div>
 
@@ -80,7 +81,7 @@ const ResumePage = () => {
             <strong>Python:</strong> FastAPI, Pydantic, SQLAlchemy, async backends, scripting.
           </div>
           <div className="skill-group">
-            <strong>C# / .NET:</strong> DDD, CQRS, MediatR, Entity Framework, microservices architecture.
+            <strong>C# / .NET:</strong> DDD, CQRS, MediatR, Entity Framework, EF Core migrations, microservices architecture, service decomposition.
           </div>
           <div className="skill-group">
             <strong>Java:</strong> Spring Boot, JPA, microservices architecture.
@@ -92,10 +93,10 @@ const ResumePage = () => {
             <strong>Database:</strong> PostgreSQL, MySQL, MongoDB, Redis.
           </div>
           <div className="skill-group">
-            <strong>Backend:</strong> Kafka, RabbitMQ, REST APIs, websockets, gRPC, SonarQube.
+            <strong>Backend:</strong> Kafka, RabbitMQ, REST APIs, websockets, gRPC, SonarQube, Kong, Ocelot, API gateway design, BFF pattern.
           </div>
           <div className="skill-group">
-            <strong>Auth:</strong> JWT, OAuth, OpenID, SSO, LDAP.
+            <strong>Auth:</strong> JWT, OAuth, OpenID, SSO, LDAP, OTP/PIN/IVR authentication, fraud & identity-verification integrations.
           </div>
           <div className="skill-group">
             <strong>AI:</strong> OpenAI SDK, MCP, LLM.

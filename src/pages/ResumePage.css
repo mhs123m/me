@@ -117,12 +117,12 @@
   }
 
   .resume-page {
-    font-size: 10pt;
-    line-height: 1.4;
+    font-size: 9pt;
+    line-height: 1.28;
   }
 
   .resume-page .resume-header {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .resume-page .resume-header h1 {
@@ -135,11 +135,11 @@
   }
 
   .resume-page .cv-section {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
   }
 
   .resume-page .entry {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .resume-page ul {
@@ -151,11 +151,11 @@
   }
 
   .resume-page .skill-group {
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   @page {
-    margin: 10mm;
+    margin: 8mm;
     margin-top: 0;
     margin-bottom: 0;
   }
