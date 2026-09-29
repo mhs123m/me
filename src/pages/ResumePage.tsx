@@ -35,8 +35,20 @@ const ResumePage = () => {
         <div className="right-col">
           <div className="entry">
             <div className="entry-header">
+              <strong>HALA</strong>
+              <span className="date">2026 – Present</span>
+            </div>
+            <p className="role">Software Engineer (Backend)</p>
+            <ul>
+              <li>Own sprint development end-to-end, from planning to delivery.</li>
+              <li>Leading the restructuring and revamp of the core entity service.</li>
+            </ul>
+          </div>
+
+          <div className="entry">
+            <div className="entry-header">
               <strong>Tuwaiq Academy</strong>
-              <span className="date">2024 – Present</span>
+              <span className="date">2024 – 2026</span>
             </div>
             <p className="role">Software Engineer (Backend)</p>
             <ul>
